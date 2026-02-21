@@ -38,6 +38,24 @@ PATHが通っていない場合は、`--tesseract-cmd` で実行ファイルを�
 
 ## 使い方
 
+Tesseract本体のダウンロード先:
+
+- UB Mannheim版（Windows向け配布）: https://github.com/UB-Mannheim/tesseract/wiki
+
+Windowsでのインストール手順:
+
+1. 上記ページからインストーラー（`.exe`）をダウンロードして実行
+2. 既定のインストール先（通常 `C:\Program Files\Tesseract-OCR`）でインストール
+3. `tesseract.exe` が見つからない場合は `--tesseract-cmd` にフルパスを指定
+
+`jpn_vert`（日本語縦書き用言語データ）のダウンロード先:
+
+- `jpn_vert.traineddata`: https://github.com/tesseract-ocr/tessdata_best/blob/main/jpn_vert.traineddata
+
+配置先（例）:
+
+- `C:\Program Files\Tesseract-OCR\tessdata\jpn_vert.traineddata`
+
 基本:
 
 ```bash
@@ -54,6 +72,12 @@ python images_to_text.py . -o result.txt
 
 ```bash
 python images_to_text.py "C:\Users\kenji\Pictures\scans" -o all.txt --tesseract-cmd "C:\Program Files\Tesseract-OCR\tesseract.exe" --lang jpn
+```
+
+縦書き画像をOCR（`jpn_vert`を使用）:
+
+```bash
+python images_to_text.py "C:\Users\kenji\Pictures\vertical_scans" -o vertical.txt --tesseract-cmd "C:\Program Files\Tesseract-OCR\tesseract.exe" --lang jpn_vert
 ```
 
 拡張子を絞る:
